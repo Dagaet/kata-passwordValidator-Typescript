@@ -27,4 +27,9 @@ describe("Helpers should", () => {
     expect(result).toBe(true)
   })
 
+  it("Return true when it contains a number", () => {
+    const result = helpers.containsANumber("a4")
+
+    expect(result).toBe(true)
+  })
 })
