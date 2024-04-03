@@ -21,4 +21,10 @@ describe("Helpers should", () => {
     expect(result).toBe(true)
   })
 
+  it("Return true when it contains a lowerCase", () => {
+    const result = helpers.containsALowercase("a")
+
+    expect(result).toBe(true)
+  })
+
 })
