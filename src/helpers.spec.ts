@@ -32,4 +32,9 @@ describe("Helpers should", () => {
 
     expect(result).toBe(true)
   })
+  it("Return true when it contains an underscore", () => {
+    const result = helpers.containsAnUnderscore("a_4")
+
+    expect(result).toBe(true)
+  })
 })
