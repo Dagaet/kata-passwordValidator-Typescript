@@ -1,5 +1,4 @@
 import { describe, it, expect } from "vitest"
-import { isPasswordValid } from "./main.js"
 import { helpers } from "./helpers.js"
 
 // Should return true when it has 8 characters
