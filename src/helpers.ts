@@ -12,8 +12,14 @@ function containsALowercase(password:string){
     return rExp.test(password)
 }
 
+function containsANumber(password:string) {
+    const rExp : RegExp = /[0-9]+/;
+    return rExp.test(password)
+}
+
 export const helpers = {
     hasMoreThanEightCharacters,
     containsAnUppercase,
-    containsALowercase
+    containsALowercase,
+    containsANumber
 }
