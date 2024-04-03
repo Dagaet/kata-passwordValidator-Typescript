@@ -17,9 +17,14 @@ function containsANumber(password:string) {
     return rExp.test(password)
 }
 
+function containsAnUnderscore(password:string) {
+    return password.includes("_")
+}
+
 export const helpers = {
     hasMoreThanEightCharacters,
     containsAnUppercase,
     containsALowercase,
-    containsANumber
+    containsANumber,
+    containsAnUnderscore
 }
