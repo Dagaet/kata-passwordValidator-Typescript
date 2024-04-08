@@ -85,3 +85,36 @@ describe("PasswordValidator2 should ", () => {
       expect(result).toBe(true)
     })
 })
+
+describe("PasswordValidator3 should ", () => {
+  it("Not permit a password when it doesnt have more than sixteen characters", () => {
+    const passwordValidator3 = new PasswordValidator3()
+    const result = passwordValidator3.isPasswordValid("Ma_")
+
+    expect(result).toBe(false)
+  }),
+    it("Not permit a password when it doesnt have uppercase", () => {
+      const passwordValidator3 = new PasswordValidator3()
+      const result = passwordValidator3.isPasswordValid("unacontrasenialarga_")
+
+      expect(result).toBe(false)
+    }),
+    it("Not permit a password when it doesnt have lowercase", () => {
+      const passwordValidator3 = new PasswordValidator3()
+      const result = passwordValidator3.isPasswordValid("UNACONTRASENIALARGA_")
+
+      expect(result).toBe(false)
+    }),
+    it("Not permit a password when it doesnt have underscore", () => {
+      const passwordValidator3 = new PasswordValidator3()
+      const result = passwordValidator3.isPasswordValid("unacontraseniaLarga")
+
+      expect(result).toBe(false)
+    }),
+    it("Permit a password when meet all conditions", () => {
+      const passwordValidator3 = new PasswordValidator3()
+      const result = passwordValidator3.isPasswordValid("unacontraseniaLarga_")
+
+      expect(result).toBe(true)
+    })
+})
