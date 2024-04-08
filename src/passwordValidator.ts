@@ -34,7 +34,33 @@ export class PasswordValidator {
 }
 
 export class PasswordValidator2 {
-  isPasswordValid(password: string) {}
+  isPasswordValid(password: string) {
+    return (
+      this.hasMoreThanSixCharacters(password) &&
+      this.containsALowercase(password) &&
+      this.containsANumber(password) &&
+      this.containsAnUppercase(password)
+    )
+  }
+
+  private hasMoreThanSixCharacters(password: string) {
+    return password.length >= 6
+  }
+
+  private containsAnUppercase(password: string) {
+    const rExp: RegExp = /[A-Z]+/
+    return rExp.test(password)
+  }
+
+  private containsALowercase(password: string) {
+    const rExp: RegExp = /[a-z]+/
+    return rExp.test(password)
+  }
+
+  private containsANumber(password: string) {
+    const rExp: RegExp = /[0-9]+/
+    return rExp.test(password)
+  }
 }
 export class PasswordValidator3 {
   isPasswordValid(password: string) {}
