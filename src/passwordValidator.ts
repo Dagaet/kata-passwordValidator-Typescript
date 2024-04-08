@@ -32,3 +32,10 @@ export class PasswordValidator {
     return password.includes("_")
   }
 }
+
+export class PasswordValidator2 {
+  isPasswordValid(password: string) {}
+}
+export class PasswordValidator3 {
+  isPasswordValid(password: string) {}
+}
