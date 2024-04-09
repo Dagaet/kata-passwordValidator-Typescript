@@ -1,25 +1,24 @@
-export class PasswordValidator {
+import { IPasswordValidator } from "./interfaces/IPasswordValidator.js"
+
+export class PasswordValidator implements IPasswordValidator {
   isPasswordValid(password: string) {
     return (
-      this.hasMoreThanEightCharacters(password) &&
-      this.containsALowercase(password) &&
+      this.hasValidLength(password, 8) &&
+      this.containsALowerCase(password) &&
       this.containsANumber(password) &&
-      this.containsAnUppercase(password) &&
+      this.containsAnUpperCase(password) &&
       this.containsAnUnderscore(password)
     )
   }
-
-  private hasMoreThanEightCharacters(password: string) {
-    return password.length >= 8
-  }
-
-  private containsAnUppercase(password: string) {
-    const rExp: RegExp = /[A-Z]+/
+  containsALowerCase(password: string): boolean {
+    const rExp: RegExp = /[a-z]+/
     return rExp.test(password)
   }
-
-  private containsALowercase(password: string) {
-    const rExp: RegExp = /[a-z]+/
+  hasValidLength(password: string, value: number): boolean {
+    return password.length >= value
+  }
+  containsAnUpperCase(password: string): boolean {
+    const rExp: RegExp = /[A-Z]+/
     return rExp.test(password)
   }
 
