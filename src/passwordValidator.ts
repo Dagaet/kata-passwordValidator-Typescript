@@ -22,7 +22,10 @@ export class PasswordValidator implements IPasswordValidator {
   }
   containsAnUpperCase(password: string): boolean {
     const rExp: RegExp = /[A-Z]+/
-    return rExp.test(password)
+    if (!rExp.test(password)){
+      throw new Error(`Error, password does not have uppercase.`);
+    }
+    return true
   }
 
   private containsANumber(password: string) {
