@@ -40,7 +40,10 @@ export class PasswordValidator implements IPasswordValidator {
   }
 
   private containsAnUnderscore(password: string) {
-    return password.includes("_")
+    if (!password.includes("_")) {
+      throw new Error(`Error, password does not have an underscore.`);
+    }
+    return true
   }
 }
 
