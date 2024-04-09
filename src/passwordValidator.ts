@@ -58,27 +58,28 @@ export class PasswordValidator2 implements IPasswordValidator{
     return rExp.test(password)
   }
 }
-export class PasswordValidator3 {
+export class PasswordValidator3 implements IPasswordValidator {
+
   isPasswordValid(password: string) {
     return (
-      this.hasMoreThanSixteenCharacters(password) &&
-      this.containsALowercase(password) &&
-      this.containsAnUppercase(password) &&
+      this.hasValidLength(password, 16) &&
+      this.containsALowerCase(password) &&
+      this.containsAnUpperCase(password) &&
       this.containsAnUnderscore(password)
     )
   }
 
-  private hasMoreThanSixteenCharacters(password: string) {
-    return password.length >= 16
-  }
-
-  private containsAnUppercase(password: string) {
-    const rExp: RegExp = /[A-Z]+/
+  containsALowerCase(password: string): boolean {
+    const rExp: RegExp = /[a-z]+/
     return rExp.test(password)
   }
 
-  private containsALowercase(password: string) {
-    const rExp: RegExp = /[a-z]+/
+  hasValidLength(password: string, value: number): boolean {
+    return password.length >= value
+  }
+
+  containsAnUpperCase(password: string): boolean {
+    const rExp: RegExp = /[A-Z]+/
     return rExp.test(password)
   }
 
