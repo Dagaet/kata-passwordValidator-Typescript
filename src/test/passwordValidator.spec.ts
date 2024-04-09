@@ -17,23 +17,23 @@ describe("PasswordValidator should", () => {
   }),
     it("Not permit a password when it doesnt have more than eight characters", () => {
       const passwordValidator = new PasswordValidator()
-      expect(() => passwordValidator.isPasswordValid("Aaa_1")).toThrowError(/^Error, password does not have the required length.$/)
+      expect(() => passwordValidator.isPasswordValid("Aaa_1")).toThrowError(/^Error, password:\ndoes not have the required length$/)
     }),
     it("Not permit a password when it doesnt have uppercase", () => {
       const passwordValidator = new PasswordValidator()
-      expect(() => passwordValidator.isPasswordValid("manuel_alejandro1998")).toThrowError(/^Error, password does not have uppercase.$/)
+      expect(() => passwordValidator.isPasswordValid("manuel_alejandro1998")).toThrowError(/^Error, password:\ndoes not have uppercase$/)
     }),
     it("Not permit a password when it doesnt have lowercase", () => {
       const passwordValidator = new PasswordValidator()
-      expect(() => passwordValidator.isPasswordValid("MANUEL_ALEJANDRO1998")).toThrowError(/^Error, password does not have lowercase.$/)
+      expect(() => passwordValidator.isPasswordValid("MANUEL_ALEJANDRO1998")).toThrowError(/^Error, password:\ndoes not have lowercase$/)
     }),
     it("Not permit a password when it doesnt have a number", () => {
       const passwordValidator = new PasswordValidator()
-      expect(() => passwordValidator.isPasswordValid("Manuel_Alejandro")).toThrowError(/^Error, password does not have a number.$/)
+      expect(() => passwordValidator.isPasswordValid("Manuel_Alejandro")).toThrowError(/^Error, password:\ndoes not have a number$/)
     }),
     it("Not permit a password when it doesnt have underscore", () => {
       const passwordValidator = new PasswordValidator()
-      expect(() => passwordValidator.isPasswordValid("ManuelAlejandro1998")).toThrowError(/^Error, password does not have an underscore.$/)
+      expect(() => passwordValidator.isPasswordValid("ManuelAlejandro1998")).toThrowError(/^Error, password:\ndoes not have an underscore$/)
     })
 })
 
@@ -121,16 +121,16 @@ describe("PasswordValidator3 should ", () => {
 describe("PasswordValidator should throw error", () => {
   it("When given less characters than needed", () => {
     const passwordValidator = new PasswordValidator()
-    expect(() => passwordValidator.isPasswordValid("Aaa_1")).toThrowError(/^Error, password does not have the required length.$/)
+    expect(() => passwordValidator.isPasswordValid("Aaa_1")).toThrowError(/^Error, password:\ndoes not have the required length$/)
   })
 
   it("When it has no uppercase", () => {
     const passwordValidator = new PasswordValidator()
-    expect(() => passwordValidator.isPasswordValid("manuel_alejandro1998")).toThrowError(/^Error, password does not have uppercase.$/)
+    expect(() => passwordValidator.isPasswordValid("manuel_alejandro1998")).toThrowError(/^Error, password:\ndoes not have uppercase$/)
   })
 
   it("When fail various conditions", ()=> {
     const passwordValidator = new PasswordValidator()
-    expect(() => passwordValidator.isPasswordValid("manuel_alejandro")).toThrowError(/^Error, password does not have uppercase & does not have a number.$/)
+    expect(() => passwordValidator.isPasswordValid("manuel_alejandro")).toThrowError(/^Error, password:\ndoes not have uppercase\ndoes not have a number$/)
   })
 })

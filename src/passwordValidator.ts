@@ -2,48 +2,56 @@ import { IPasswordValidator } from "./interfaces/IPasswordValidator.js"
 
 export class PasswordValidator implements IPasswordValidator {
   isPasswordValid(password: string) {
-    return (
-      this.hasValidLength(password, 8) &&
-      this.containsALowerCase(password) &&
-      this.containsANumber(password) &&
-      this.containsAnUpperCase(password) &&
-      this.containsAnUnderscore(password)
-    )
+    let messageError = "Error, password:";
+
+    if(!this.hasValidLength(password, 8)){
+      messageError += "\ndoes not have the required length"
+    }
+
+    if(!this.containsALowerCase(password)){
+      messageError += "\ndoes not have lowercase"
+    }
+
+    if(!this.containsAnUpperCase(password)){
+      messageError += "\ndoes not have uppercase"
+    }
+
+
+    if(!this.containsANumber(password)){
+      messageError += "\ndoes not have a number"
+    }
+
+
+    if(!this.containsAnUnderscore(password)){
+      messageError += "\ndoes not have an underscore"
+    }
+
+    if (messageError !== "Error, password:"){
+      throw new Error(messageError);
+      
+    }
+
+    return true
   }
   containsALowerCase(password: string): boolean {
     const rExp: RegExp = /[a-z]+/
-    if (!rExp.test(password)){
-      throw new Error(`Error, password does not have lowercase.`);
-    }
-    return true
+    return rExp.test(password)
   }
   hasValidLength(password: string, value: number): boolean | Error {
-    if (password.length < value ) {
-        throw new Error(`Error, password does not have the required length.`);   
-    }
-    return true
+    return password.length >= value
   }
   containsAnUpperCase(password: string): boolean {
     const rExp: RegExp = /[A-Z]+/
-    if (!rExp.test(password)){
-      throw new Error(`Error, password does not have uppercase.`);
-    }
-    return true
+    return rExp.test(password)
   }
 
   private containsANumber(password: string) {
     const rExp: RegExp = /[0-9]+/
-    if (!rExp.test(password)){
-      throw new Error(`Error, password does not have a number.`);
-    }
-    return true
+    return rExp.test(password)
   }
 
   private containsAnUnderscore(password: string) {
-    if (!password.includes("_")) {
-      throw new Error(`Error, password does not have an underscore.`);
-    }
-    return true
+    return password.includes("_")
   }
 }
 
