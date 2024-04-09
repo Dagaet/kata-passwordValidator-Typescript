@@ -14,8 +14,11 @@ export class PasswordValidator implements IPasswordValidator {
     const rExp: RegExp = /[a-z]+/
     return rExp.test(password)
   }
-  hasValidLength(password: string, value: number): boolean {
-    return password.length >= value
+  hasValidLength(password: string, value: number): boolean | Error {
+    if (password.length < value ) {
+        throw new Error(`Error, password does not have the required length.`);   
+    }
+    return true
   }
   containsAnUpperCase(password: string): boolean {
     const rExp: RegExp = /[A-Z]+/

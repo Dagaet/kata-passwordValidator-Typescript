@@ -17,9 +17,7 @@ describe("PasswordValidator should", () => {
   }),
     it("Not permit a password when it doesnt have more than eight characters", () => {
       const passwordValidator = new PasswordValidator()
-      const result = passwordValidator.isPasswordValid("aaAA_")
-
-      expect(result).toBe(false)
+      expect(() => passwordValidator.isPasswordValid("Aaa_1")).toThrowError(/^Error, password does not have the required length.$/)
     }),
     it("Not permit a password when it doesnt have uppercase", () => {
       const passwordValidator = new PasswordValidator()
