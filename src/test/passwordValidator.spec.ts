@@ -118,3 +118,19 @@ describe("PasswordValidator3 should ", () => {
       expect(result).toBe(true)
     })
 })
+
+
+// Password should throw error when given less characters than needed
+// Password should throw error when it has no uppercase
+// Password should throw error when it has no lowercase
+// Password should throw error when it has no underscore
+// Password should throw error when it has no number
+// Password should throw error when fail various conditions
+// Password should throw error when doesn't meet no condition
+
+describe("PasswordValidator should throw error", () => {
+  it("When given less characters than needed", () => {
+    const passwordValidator = new PasswordValidator()
+    expect(() => passwordValidator.isPasswordValid("Aaa_1")).toThrowError(/^Error, password does not have the required length.$/)
+  })
+})
