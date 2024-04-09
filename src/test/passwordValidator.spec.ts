@@ -128,4 +128,9 @@ describe("PasswordValidator should throw error", () => {
     const passwordValidator = new PasswordValidator()
     expect(() => passwordValidator.isPasswordValid("manuel_alejandro1998")).toThrowError(/^Error, password does not have uppercase.$/)
   })
+
+  it("When fail various conditions", ()=> {
+    const passwordValidator = new PasswordValidator()
+    expect(() => passwordValidator.isPasswordValid("manuel_alejandro")).toThrowError(/^Error, password does not have uppercase & does not have a number.$/)
+  })
 })
