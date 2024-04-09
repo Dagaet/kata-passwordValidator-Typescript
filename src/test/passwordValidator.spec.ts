@@ -29,9 +29,7 @@ describe("PasswordValidator should", () => {
     }),
     it("Not permit a password when it doesnt have a number", () => {
       const passwordValidator = new PasswordValidator()
-      const result = passwordValidator.isPasswordValid("Manuel_Alejandro")
-
-      expect(result).toBe(false)
+      expect(() => passwordValidator.isPasswordValid("Manuel_Alejandro")).toThrowError(/^Error, password does not have a number.$/)
     }),
     it("Not permit a password when it doesnt have underscore", () => {
       const passwordValidator = new PasswordValidator()
