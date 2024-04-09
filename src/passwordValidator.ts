@@ -12,7 +12,10 @@ export class PasswordValidator implements IPasswordValidator {
   }
   containsALowerCase(password: string): boolean {
     const rExp: RegExp = /[a-z]+/
-    return rExp.test(password)
+    if (!rExp.test(password)){
+      throw new Error(`Error, password does not have lowercase.`);
+    }
+    return true
   }
   hasValidLength(password: string, value: number): boolean | Error {
     if (password.length < value ) {
