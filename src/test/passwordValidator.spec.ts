@@ -21,13 +21,11 @@ describe("PasswordValidator should", () => {
     }),
     it("Not permit a password when it doesnt have uppercase", () => {
       const passwordValidator = new PasswordValidator()
-    expect(() => passwordValidator.isPasswordValid("manuel_alejandro1998")).toThrowError(/^Error, password does not have uppercase.$/)
+      expect(() => passwordValidator.isPasswordValid("manuel_alejandro1998")).toThrowError(/^Error, password does not have uppercase.$/)
     }),
     it("Not permit a password when it doesnt have lowercase", () => {
       const passwordValidator = new PasswordValidator()
-      const result = passwordValidator.isPasswordValid("MANUEL_ALEJANDRO1998")
-
-      expect(result).toBe(false)
+      expect(() => passwordValidator.isPasswordValid("MANUEL_ALEJANDRO1998")).toThrowError(/^Error, password does not have uppercase.$/)
     }),
     it("Not permit a password when it doesnt have a number", () => {
       const passwordValidator = new PasswordValidator()
