@@ -33,7 +33,10 @@ export class PasswordValidator implements IPasswordValidator {
 
   private containsANumber(password: string) {
     const rExp: RegExp = /[0-9]+/
-    return rExp.test(password)
+    if (!rExp.test(password)){
+      throw new Error(`Error, password does not have a number.`);
+    }
+    return true
   }
 
   private containsAnUnderscore(password: string) {
