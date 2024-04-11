@@ -92,27 +92,27 @@ describe("PasswordValidator2 should ", () => {
 describe("PasswordValidator3 should ", () => {
   it("Not permit a password when it doesnt have more than sixteen characters", () => {
     const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_THREE)
-    const result = passwordValidator.isPasswordValid("Ma_")
-
-    expect(result).toBe(false)
+    expect(() => passwordValidator.isPasswordValid("Ma_")).toThrowError(
+      /^Error, password:\ndoes not have the required length$/,
+    )
   }),
     it("Not permit a password when it doesnt have uppercase", () => {
       const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_THREE)
-      const result = passwordValidator.isPasswordValid("unacontrasenialarga_")
-
-      expect(result).toBe(false)
+      expect(() => passwordValidator.isPasswordValid("unacontrasenialarga_")).toThrowError(
+        /^Error, password:\ndoes not have uppercase$/,
+      )
     }),
     it("Not permit a password when it doesnt have lowercase", () => {
       const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_THREE)
-      const result = passwordValidator.isPasswordValid("UNACONTRASENIALARGA_")
-
-      expect(result).toBe(false)
+      expect(() => passwordValidator.isPasswordValid("UNACONTRASENIALARGA_")).toThrowError(
+        /^Error, password:\ndoes not have lowercase$/,
+      )
     }),
     it("Not permit a password when it doesnt have underscore", () => {
       const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_THREE)
-      const result = passwordValidator.isPasswordValid("unacontraseniaLarga")
-
-      expect(result).toBe(false)
+      expect(() => passwordValidator.isPasswordValid("unacontraseniaLarga")).toThrowError(
+        /^Error, password:\ndoes not have an underscore$/,
+      )
     }),
     it("Permit a password when meet all conditions", () => {
       const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_THREE)
