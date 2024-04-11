@@ -58,27 +58,28 @@ describe("PasswordValidator should", () => {
 describe("PasswordValidator2 should ", () => {
   it("Not permit a password when it doesnt have more than six characters", () => {
     const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_TWO)
-    const result = passwordValidator.isPasswordValid("M987a")
 
-    expect(result).toBe(false)
+    expect(() => passwordValidator.isPasswordValid("M987a")).toThrowError(
+      /^Error, password:\ndoes not have the required length$/,
+    )
   }),
     it("Not permit a password when it doesnt have uppercase", () => {
       const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_TWO)
-      const result = passwordValidator.isPasswordValid("a987a98e")
-
-      expect(result).toBe(false)
+      expect(() => passwordValidator.isPasswordValid("a987a98e")).toThrowError(
+        /^Error, password:\ndoes not have uppercase$/,
+      )
     }),
     it("Not permit a password when it doesnt have lowercase", () => {
       const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_TWO)
-      const result = passwordValidator.isPasswordValid("A987A98E")
-
-      expect(result).toBe(false)
+      expect(() => passwordValidator.isPasswordValid("A987A98E")).toThrowError(
+        /^Error, password:\ndoes not have lowercase$/,
+      )
     }),
     it("Not permit a password when it doesnt have a number", () => {
       const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_TWO)
-      const result = passwordValidator.isPasswordValid("ABCeABCE")
-
-      expect(result).toBe(false)
+      expect(() => passwordValidator.isPasswordValid("ABCeABCE")).toThrowError(
+        /^Error, password:\ndoes not have a number$/,
+      )
     }),
     it("Permit a password when meet all conditions", () => {
       const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_TWO)
