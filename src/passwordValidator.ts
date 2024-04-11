@@ -2,20 +2,20 @@ import { IPasswordValidator } from "./interfaces/IPasswordValidator.js"
 
 export class PasswordValidator implements IPasswordValidator {
   isPasswordValid(password: string) {
-    let messageError = "Error, password:";
+    let messageError = "Error, password:"
 
-    this.hasValidLength(password, 8) ? messageError += "" : messageError += "\ndoes not have the required length"
-    
-    this.containsALowerCase(password) ? messageError += "" : messageError += "\ndoes not have lowercase"
+    this.hasValidLength(password, 8) ? (messageError += "") : (messageError += "\ndoes not have the required length")
 
-    this.containsAnUpperCase(password) ? messageError += "" : messageError += "\ndoes not have uppercase"
+    this.containsALowerCase(password) ? (messageError += "") : (messageError += "\ndoes not have lowercase")
 
-    this.containsANumber(password) ? messageError += "" : messageError += "\ndoes not have a number"
+    this.containsAnUpperCase(password) ? (messageError += "") : (messageError += "\ndoes not have uppercase")
 
-    this.containsAnUnderscore(password) ? messageError += "" : messageError += "\ndoes not have an underscore"
+    this.containsANumber(password) ? (messageError += "") : (messageError += "\ndoes not have a number")
 
-    if (messageError !== "Error, password:"){
-      throw new Error(messageError);
+    this.containsAnUnderscore(password) ? (messageError += "") : (messageError += "\ndoes not have an underscore")
+
+    if (messageError !== "Error, password:") {
+      throw new Error(messageError)
     }
 
     return true
@@ -42,15 +42,23 @@ export class PasswordValidator implements IPasswordValidator {
   }
 }
 
-export class PasswordValidator2 implements IPasswordValidator{
-  
+export class PasswordValidator2 implements IPasswordValidator {
   isPasswordValid(password: string) {
-    return (
-      this.hasValidLength(password, 6) &&
-      this.containsALowerCase(password) &&
-      this.containsANumber(password) &&
-      this.containsAnUpperCase(password)
-    )
+    let messageError = "Error, password:"
+
+    this.hasValidLength(password, 6) ? (messageError += "") : (messageError += "\ndoes not have the required length")
+
+    this.containsALowerCase(password) ? (messageError += "") : (messageError += "\ndoes not have lowercase")
+
+    this.containsANumber(password) ? (messageError += "") : (messageError += "\ndoes not have a number")
+
+    this.containsAnUpperCase(password) ? (messageError += "") : (messageError += "\ndoes not have uppercase")
+
+    if (messageError !== "Error, password:") {
+      throw new Error(messageError)
+    }
+
+    return true
   }
   containsALowerCase(password: string): boolean {
     const rExp: RegExp = /[a-z]+/
@@ -69,7 +77,6 @@ export class PasswordValidator2 implements IPasswordValidator{
   }
 }
 export class PasswordValidator3 implements IPasswordValidator {
-
   isPasswordValid(password: string) {
     return (
       this.hasValidLength(password, 16) &&
