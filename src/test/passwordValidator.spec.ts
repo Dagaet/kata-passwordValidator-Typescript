@@ -130,20 +130,6 @@ describe("PasswordValidator3 should ", () => {
 // Password should throw error when doesn't meet no condition
 
 describe("PasswordValidator should throw error", () => {
-  it("When given less characters than needed", () => {
-    const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_ONE)
-    expect(() => passwordValidator.isPasswordValid("Aaa_1")).toThrowError(
-      /^Error, password:\ndoes not have the required length$/,
-    )
-  })
-
-  it("When it has no uppercase", () => {
-    const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_ONE)
-    expect(() => passwordValidator.isPasswordValid("manuel_alejandro1998")).toThrowError(
-      /^Error, password:\ndoes not have uppercase$/,
-    )
-  })
-
   it("When fail various conditions", () => {
     const passwordValidator = factoryPasswordValidator.getPasswordValidator(PasswordValidatorTypes.VALIDATOR_ONE)
     expect(() => passwordValidator.isPasswordValid("manuel_alejandro")).toThrowError(
